@@ -9,6 +9,12 @@ class PricesMaterials(db.Model):
     price = db.Column(db.Integer, nullable=False)
 
 
+class CostWorks(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    work_name = db.Column(db.String(150), nullable=False)
+    costs = db.Column(db.Integer, nullable=False)
+
+
 # class Artist(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(100), nullable=False)

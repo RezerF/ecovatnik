@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
-from models import db, PricesMaterials
+
+from logics.operations import Calculators
+from models import db, PricesMaterials, CostWorks
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ecovatnik.db'
@@ -17,10 +19,14 @@ def calculator():
 
 @app.route("/calculate", methods=["POST"])
 def calculate():
+    # calculator_list = PricesMaterials.query.all()
+    # if request.method == "POST":
     n1 = int(request.form['n1'])
     n2 = int(request.form['n2'])
-    result = n1 * n2
-    return str(result)
+    calc = Calculators(n1, n2)
+    volume = calc.volume_calculate
+    data = {'volume': volume}
+    return render_template('result_page.html', data=data)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 from flask import Flask
-from models import PricesMaterials, db
+from models import PricesMaterials, CostWorks,db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ecovatnik.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -15,6 +15,13 @@ if __name__ == '__main__':
         good2 = PricesMaterials(title='Эковата', price=1080)
         good3 = PricesMaterials(title='Брус', price=300)
         db.session.add_all([good1, good2, good3])
+        db.session.commit()
+
+        # создаем стоимость работ
+        work1 = CostWorks(work_name='МонтажЭковаты', costs=23)
+        work2 = CostWorks(work_name='ОбустройствоОбрешетки', costs=500)
+        work3 = CostWorks(work_name='МонтажПароизоляции', costs=200)
+        db.session.add_all([work1, work2, work3])
         db.session.commit()
         #
         # # создаем тестовых исполнителей
