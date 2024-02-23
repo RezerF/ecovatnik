@@ -3,7 +3,10 @@
     Results
 {% endblock %}
 {% block m_body %}
-    <h1>This is Results:</h1>
+    <div class="container">
+        <h1>Результаты расчета утепления стены площадью {{ data.sqr }} кв.м. толщиной {{ data.width }}</h1><br><br>
+        <h3>Стоимость утепления без дополнительных работ:</h3><br><br>
+    </div>
     <style>#k {
         color: grey;
     }
@@ -12,39 +15,61 @@
         color: #1a2421;
         background-color: #cbcbcb;
     }</style>
-    <form method="POST" action="/calculate">
+    <form method="POST" action="/calculate" class="container">
     <label id="k">Объем утепления:</label>
-    <label for="k1">{{ data.volume }}</label><br><br>
-    <button>Рассчитать</button>
+    <label for="k1">{{ data.volume }} куб.м.</label><br><br>
+    <label id="k">Вес утеплителя:</label>
+    <label for="k1">{{ data.ves }} кг.</label><br><br>
+    <label id="k">Количество упаковок:</label>
+    <label for="k1">{{ data.packages_count }} шт.</label><br><br>
+    <label id="k">Стоимость эковаты:</label>
+    <label for="k1">{{ data.eco_price }} руб.</label><br><br>
+    <label id="k">Стоимость монтажа:</label>
+    <label for="k1">{{ data.cost_work }} руб.</label><br><br>
+    <label id="k">Итого: материал + работа:</label>
+    <label for="k1">{{data.eco_price + data.cost_work }} руб.</label><br><br><br><br>
+
+    <h3>Стоимости дополнительных работ: </h3><br><br>
+
+    <h4>Материалы: </h4><br>
+
+    <label id="k">Ветро-влагозащитная мембрана Изоспан АМ 70 :</label>
+    <label for="k1">{{ data.izospan_am }} м2 </label><br><br>
+    <label id="k">СД (Ч) СЕТКА АРМИРУЮЩАЯ 2Х25 :</label>
+    <label for="k1">{{ data.setka_arm }} м2 </label><br><br>
+    <label id="k">Брус сухой-строганный 50*50*3000 :</label>
+    <label for="k1">{{ data.brus_50x50 }} шт.</label><br><br>
+    <label id="k">Брус сухой-строганный 20*40*3000 :</label>
+    <label for="k1">{{ data.brus_20x40 }} шт.</label><br><br>
+    <label id="k">Саморезы по дереву 40x4,0 мм потайная головка конструкционные :</label>
+    <label for="k1">{{ data.samorez_potainoi }} шт.</label><br><br>
+    <label id="k">Саморезы клопы 38 (41)x4,2 мм :</label>
+    <label for="k1">{{ data.samorez_clop }} шт.</label><br><br>
+    <label id="k">Болт сантехнический 8х100 мм DIN 571 оцинкованный :</label>
+    <label for="k1">{{ data.bolt_san_tech }} шт.</label><br><br>
+    <label id="k">Кронштейн для вентилируемых фасадов регулируемый 200х50х50х2мм :</label>
+    <label for="k1">{{ data.kronshtein }} шт.</label><br><br>
+    <label id="k">Скобы для степлера тип 53 8 мм (1000 шт.) :</label>
+    <label for="k1">{{ data.skobi }} шт.</label><br><br>
+    <label id="k">ИЗОСПАН KL+ усиленная двухсторонняя клейкая лента 25п.м :</label>
+    <label for="k1">{{ data.skotch_isospan_kl }} п.м.</label><br><br>
+    <label id="k">Лента соединительная Изостронг LK 15 мм х 22,5п.м :</label>
+    <label for="k1">{{ data.skotch_isospan_lk }} п.м.</label><br><br>
+    <label id="k">Дюбель распорный Hard-Fix 10x80 мм нейлон :</label>
+    <label for="k1">{{ data.dubel }} шт.</label><br><br>
+
+
+    <h4>Работы: </h4><br>
+
+    <label id="k">Монтаж деревянной обрешетки по дереву :</label>
+    <label for="k1">{{ data.obreshetki_montaj_po_derevu }} руб.</label><br><br>
+    <label id="k">Монтаж деревянной обрешетки по кирпичу или бетону :</label>
+    <label for="k1">{{ data.obreshetki_montaj_po_kirpichu }} руб.</label><br><br>
+    <label id="k">Монтаж гидро/пароизоляционной пленки :</label>
+    <label for="k1">{{ data.gidro_paroisol_montaj }} руб.</label><br><br>
+    <label id="k">Монтаж армирующей сетки :</label>
+    <label for="k1">{{ data.setka_armiruu_montaj }} руб.</label><br><br>
+    <label id="k">Монтаж контробрешетки :</label>
+    <label for="k1">{{ data.kontr_obreshetka_montaj }} руб.</label><br><br>
 {% endblock %}
 
-
-
-
-
-
-{##}
-{#"""#}
-{#<style>#k {#}
-{#    color: grey;#}
-{#\}#}
-{##}
-{##k1 {#}
-{#    color: #1a2421;#}
-{#    background-color: #cbcbcb;#}
-{#\}</style>#}
-{#<form method="POST" action="/calculate">#}
-{#    <label id="k">Enter first number:</label>#}
-{#    <input type="number" id="k1" name="n1"><br><br>#}
-{#    <label id="k">Enter second number:</label>#}
-{#    <input type="number" id="k1" name="n2"><br><br>#}
-{#    <label>select an operator:</label>#}
-{#    <select name="opr" id="op">#}
-{#        <option value="add">+</option>#}
-{#        <option value="sub">-</option>#}
-{#        <option value="mul">*</option>#}
-{#        <option value="div">/</option>#}
-{#    </select><br><br>#}
-{#    <input type="submit">#}
-{#</form>#}
-{#"""#}

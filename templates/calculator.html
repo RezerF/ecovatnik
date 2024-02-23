@@ -4,7 +4,7 @@ My_calc
 {% endblock %}
 {% block m_body %}
     <div class="container">
-        <h1>This is Calculator</h1>
+        <h1>Расчет стоимости утепления</h1><br><br>
     </div>
     <style>#k {
     color: grey;
@@ -14,32 +14,10 @@ My_calc
     color: #1a2421;
     background-color: #cbcbcb;
 }</style>
-<form method="POST" action="/calculate">
+<form method="POST" action="/calculate" class="container">
     <label id="k">Площадь перекрытия:</label>
-    <label for="k1"></label><input type="number" id="k1" name="n1"><br><br>
+    <label for="k1"></label><input type="number" id="k1" name="sqr"><br><br>
     <label id="k">Толщина утепления:</label>
-    <label for="k2"></label><input type="number" id="k2" name="n2"><br><br>
+    <label for="k2"></label><input type="number" id="k2" name="width"><br><br>
     <button>Рассчитать</button>
 {% endblock %}
-
-
-
-{#{% extends 'base.html' %}#}
-{#{% block m_title %}#}
-{#My_calc#}
-{#{% endblock %}#}
-{#{% block m_body %}#}
-{#    <h1>This is Calculator</h1>#}
-{#    <style>#k {#}
-{#        color: grey;#}
-{#    }#}
-{##}
-{#    #k1 {#}
-{#        color: #1a2421;#}
-{#        background-color: #cbcbcb;#}
-{#    }</style>#}
-{#    <form method="POST" action="/calculate">#}
-{#    <label id="k">Объем утепления:</label>#}
-{#    <label for="k1"></label><br><br>#}
-{#    <button>Рассчитать</button>#}
-{#{% endblock %}#}
